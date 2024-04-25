@@ -4,13 +4,19 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -55,7 +61,7 @@ class MainActivity : ComponentActivity() {
 //horizontalAlignment = Alignment.CenterHorizontally (centraliza no app)
 
 // Incluir espacamento entre os campos : Spacer(modifier = Modifier.size(16.dp))
-//Ou fazer para todos de uma vez passando uma column e :
+//Ou fazer para todos de uma vez passando uma column:
 // Column (
 //            verticalArrangement = Arrangement.spacedBy(16.dp)
 
@@ -72,7 +78,8 @@ fun App() {
     Column(
         Modifier
             .background(color = Color(0xFF673AB7))
-            .fillMaxSize(),
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
 
@@ -84,7 +91,7 @@ fun App() {
             Text(
                 text = "Alcool ou Gasolina?",
                 style = TextStyle(
-                    color = Color.Cyan,
+                    color = Color.Black,
                     fontSize = 32.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -98,7 +105,7 @@ fun App() {
                         "Alcool"
                     }
                     val cor = if (ehGasolina) {
-                        Color.Red
+                        Color.White
                     } else {
                         Color.Green
                     }
@@ -126,8 +133,24 @@ fun App() {
                 },
                 label = {
                     Text(text = "Alcool")
-                }
+                })
+
+            Box(Modifier
+                .height(200.dp)
+                .fillMaxWidth()
+                .background(Color.White)
             )
+            Box(Modifier
+                .height(200.dp)
+                .fillMaxWidth()
+                .background(Color.White)
+            )
+            Box(Modifier
+                .height(200.dp)
+                .fillMaxWidth()
+                .background(Color.White)
+            )
+
         }
     }
 }
